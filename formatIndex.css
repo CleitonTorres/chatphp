@@ -1,0 +1,46 @@
+.divExterna {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: antiquewhite;
+   }
+.divMeio {
+display: table-cell;
+vertical-align: middle;
+background-color: aqua;
+}
+.divInterna {
+margin-left: auto;
+margin-right: auto;
+width: 50%;
+text-align: center;
+font-size: large;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+background-color: azure;
+}
+
+@media (min-width: 768px) {
+    /* Small devices (tablets, 768px and up) */
+    .divInterna {
+    width: 40%;
+    }
+}
+@media (min-width: 992px) {
+    /* Medium devices (desktops, 992px and up) */
+    .divInterna {
+    width: 35%;
+    }
+}
+@media (min-width: 1200px) {
+    /* Large devices (large desktops, 1200px and up) */
+    .divInterna {
+    width: 30%;
+    }
+}
+@media (min-width: 1920px) {
+    /* Large devices (large desktops, 1200px and up) */
+    .divInterna {
+    width: 25%;
+    }
+}

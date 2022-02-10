@@ -1,69 +1,24 @@
 <?php
-include('conn/Conn.php');
-use Conn\Conn;
-
-$cor = 0; //controla a alternação das cores das caixas de msg.
-
-$conn = new Conn();
-$query_lista = mysqli_query($conn->connection(), 'SELECT * FROM chat ORDER BY id');
 
 ?>
 <html>
-
-<head>
-    <link rel='stylesheet' type='text/css' href='format.css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type='text/javascript' src='localhost/chatphp/scriptsJS/enviarForm.js'></script>
-</head>
-
-<body>
-<?php
-while ($row_lista = mysqli_fetch_assoc($query_lista)) {
-    if ($cor == 0) { ?>
-        <div class="container" style="max-height:30px;">
-            <?php echo $row_lista['nome'] . " : " . $row_lista['msg']; ?>
+    <head>
+        <link rel='stylesheet' type='text/css' href='formatIndex.css'>
+    </head>
+    <body>
+        <div class="divExterna">
+            <div class="divMeio">
+                <div class="divInterna">
+                    <p>Tela de Identificação</p>
+                    <form action="chat.php" method="POST">
+                        <input type="text" name="nomeUser" placeholder="Digite seu nome..." required />
+                        <br/>
+                        <input type="submit" name="submitFormNomeUser" value="Enviar"/>
+                    </form>
+                </div>
+            </div>
         </div>
-    <?php }
-
-    if ($cor == 1) { ?>
-        <div class="container darker" style="max-height:30px;">
-            <?php echo $row_lista['nome'] . " : " . $row_lista['msg']; ?>
-        </div>
-    <?php }
-    $cor++;
-
-    if ($cor == 2) {
-        $cor = 0;
-    }
-}
-?>
-<form action="" name="formMSG" id="formMSGid" method="POST">
-<div>
-    <label for="nome">Seu Nome</label>
-    <input type="text" name="nome" id="nomeId" placeholder="Seu nome" />
-</div>
-
-<div>
-        <label for="msg">Mensagem</label>
-        <input type="text" name="msg" id="msgId" placeholder="digite sua mensagem" />
-        <button type="button" id="enviarId">Enviar</button>
-</div>
-</form>
-
-<script>
-    $('#enviarId').click(function ()
-    {
-        $.ajax({
-            url: 'http://localhost/ChatPHP/process-new-msg.php',
-            type: 'POST',
-            data: $('#formMSGid').serialize(),
-            success: function (msg) {
-                alert('Enviado!');
-                window.location.reload();
-            }
-        });
-    });
-</script>
-
-</body>
+    </body>
 </html>
+<?php
+;
